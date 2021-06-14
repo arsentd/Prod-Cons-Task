@@ -8,10 +8,9 @@ namespace ProducerApp
     class Program
     {
         /*
-         * Databse first approach.
          * Create a database.
          * Create a table.
-         * CREATE TABLE [dbo].[Tasks] (
+          CREATE TABLE [dbo].[Tasks] (
             [Id]               UNIQUEIDENTIFIER NOT NULL,
             [TaskText]         NVARCHAR (50)    NULL,
             [Status]           INT              NULL,
