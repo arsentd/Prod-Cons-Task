@@ -15,10 +15,39 @@ namespace ConsumerApp
         static void Main(string[] args)
         {
             Console.Write("Enter consumers count: ");
-            int consumersCount = int.Parse(Console.ReadLine());
+            if (int.TryParse(Console.ReadLine(), out int consumersCount))
+            {
+                if (consumersCount < 1)
+                {
+                    Console.Write("Need at least 1 consumer");
+                    Console.ReadKey();
+                    return;
+                }
+            }
+            else
+            {
+                Console.Write("Consumers count must be a number");
+                Console.ReadKey();
+                return;
+            }
 
             Console.Write("Enter tasks bulk size: ");
-            int bulkSize = int.Parse(Console.ReadLine());
+            if (int.TryParse(Console.ReadLine(), out int bulkSize))
+            {
+                if (bulkSize < 1)
+                {
+                    Console.Write("Task bulk size must be > 0");
+                    Console.ReadKey();
+                    return;
+                }
+            }
+            else
+            {
+
+                Console.Write("Tasks bulk size must be a number");
+                Console.ReadKey();
+                return;
+            }
 
             var dbContext = new TestDbContext();
 
