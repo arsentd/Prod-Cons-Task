@@ -71,6 +71,7 @@ namespace ConsumerApp
 
                         taskToSave.Status = TaskStatus.InProgress;
                         taskToSave.ConsumerId = consumer.Id;
+                        taskToSave.ModificationTime = DateTime.Now;
                         dbContext.SaveChanges();
 
                         try
