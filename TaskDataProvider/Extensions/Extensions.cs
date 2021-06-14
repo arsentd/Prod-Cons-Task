@@ -20,6 +20,11 @@ namespace TaskDataProvider.Extesions
 
         public static double GetSuccessAvgTime(this DbSet<Task> tasks)
         {
+            if (tasks.Count() == 0)
+            {
+                return 0;
+            }
+
             var totalTime = new TimeSpan(0);
             foreach (var task in tasks.Where(t => t.Status == TaskStatus.Done))
             {
@@ -30,6 +35,11 @@ namespace TaskDataProvider.Extesions
 
         public static double GetErrorsPercentage(this DbSet<Task> tasks)
         {
+            if (tasks.Count() == 0)
+            {
+                return 0;
+            }
+
             var errorCount = tasks.Where(t => t.Status == TaskStatus.Error).Count();
             return errorCount / tasks.Count() * 100;
         }
